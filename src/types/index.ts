@@ -1,0 +1,31 @@
+export interface QuoteFormData {
+  fullName: string;
+  email: string;
+  phone: string;
+  vehicleYear: string;
+  vehicleMake: string;
+  vehicleModel: string;
+  vehicleCondition: string;
+  zipCode: string;
+  additionalNotes?: string;
+}
+
+export interface ServiceArea {
+  city: string;
+  county: string;
+  zipCodes: string[];
+}
+
+export interface Review {
+  id: string;
+  author: string;
+  rating: number;
+  content: string;
+  date: string;
+  location: string;
+}
+
+export interface HubSpotResponse {
+  success: boolean;
+  message: string;
+}
