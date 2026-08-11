@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# junkthatcar.pro
 
-## Getting Started
+Junk car removal service — Seattle metro area. We buy junk cars for cash, any condition, free towing.
 
-First, run the development server:
+**Stack:** Next.js 16 · TypeScript · Tailwind v4 · HubSpot CRM
+
+## Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # fill in HubSpot credentials
+npm run dev                   # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/                  # Next.js App Router pages
+│   ├── page.tsx          # Home — hero, how it works, testimonials
+│   ├── get-quote/        # Quote form → HubSpot
+│   ├── service-areas/    # 15-city grid
+│   ├── reviews/          # Customer reviews
+│   ├── about/            # Company story + stats
+│   ├── faq/              # 10 questions, JSON-LD schema
+│   ├── privacy/          # Privacy policy
+│   ├── terms/            # Terms of service
+│   ├── api/quote/        # POST handler → HubSpot forms API
+│   ├── sitemap.ts        # Dynamic sitemap
+│   └── robots.ts         # Robots config
+├── components/
+│   ├── Header.tsx        # Responsive nav + phone CTA
+│   ├── Footer.tsx        # 4-column grid
+│   ├── QuoteForm.tsx     # react-hook-form + zod
+│   └── JsonLd.tsx        # LocalBusiness schema
+├── lib/
+│   ├── constants.ts      # SITE, SERVICE_AREAS, VEHICLE_CONDITIONS
+│   └── hubspot.ts        # HubSpot forms API submission
+└── types/
+    └── index.ts          # TypeScript interfaces
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
 
-## Learn More
+```
+HUBSPOT_PORTAL_ID=       # HubSpot portal ID
+HUBSPOT_FORM_GUID=       # HubSpot form GUID
+NEXT_PUBLIC_SITE_URL=    # https://junkthatcar.pro
+NEXT_PUBLIC_PHONE=        # Business phone
+NEXT_PUBLIC_EMAIL=        # Contact email
+```
 
-To learn more about Next.js, take a look at the following resources:
+## ToDo — Client Feedback
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [ ] Client requested changes (TBD — Mario has details)
+- [ ] AWS deployment (planning with GUPPI)
+- [ ] Replace placeholder phone number
+- [ ] OG image generation
+- [ ] Favicon / app icons
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See vault: [[Cloud Configurations Playbooks/AWS/DEPLOYMENT|AWS Deployment Playbook]].
