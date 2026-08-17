@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle, AlertCircle, Loader2, Send, Car } from "lucide-react";
+import { CheckCircle, AlertCircle, Loader2, Send, Car, MapPin } from "lucide-react";
 import { VEHICLE_CONDITIONS } from "@/lib/constants";
 import type { QuoteFormData } from "@/types";
 
@@ -21,6 +21,9 @@ const quoteSchema = z.object({
   vehicleMake: z.string().min(1, "Make is required"),
   vehicleModel: z.string().min(1, "Model is required"),
   vehicleCondition: z.string().min(1, "Select a condition"),
+  streetAddress: z.string().min(1, "Street address is required"),
+  city: z.string().min(1, "City is required"),
+  state: z.string().min(2, "State is required"),
   zipCode: z
     .string()
     .regex(/^\d{5}(-\d{4})?$/, "Enter a valid ZIP code"),
@@ -163,7 +166,7 @@ export default function QuoteForm() {
             </FieldWrapper>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 mt-4">
+          <div className="grid gap-4 mt-4">
             <FieldWrapper
               label="Condition"
               error={errors.vehicleCondition?.message}
@@ -180,11 +183,56 @@ export default function QuoteForm() {
                 ))}
               </select>
             </FieldWrapper>
+          </div>
+        </div>
+
+        {/* Section: Pickup Address */}
+        <div className="pt-4 border-t border-brand-800">
+          <h2 className="flex items-center gap-2 text-lg font-semibold text-white mb-4">
+            <MapPin className="h-5 w-5 text-brand-400" />
+            Pickup Address
+          </h2>
+
+          <FieldWrapper
+            label="Street Address"
+            error={errors.streetAddress?.message}
+          >
+            <input
+              type="text"
+              autoComplete="street-address"
+              className="input-field"
+              placeholder="123 Main St"
+              {...register("streetAddress")}
+            />
+          </FieldWrapper>
+
+          <div className="grid gap-4 sm:grid-cols-3 mt-4">
+            <FieldWrapper label="City" error={errors.city?.message}>
+              <input
+                type="text"
+                autoComplete="address-level2"
+                className="input-field"
+                placeholder="Seattle"
+                {...register("city")}
+              />
+            </FieldWrapper>
+
+            <FieldWrapper label="State" error={errors.state?.message}>
+              <input
+                type="text"
+                autoComplete="address-level1"
+                className="input-field"
+                placeholder="WA"
+                maxLength={2}
+                {...register("state")}
+              />
+            </FieldWrapper>
 
             <FieldWrapper label="ZIP Code" error={errors.zipCode?.message}>
               <input
                 type="text"
                 inputMode="numeric"
+                autoComplete="postal-code"
                 className="input-field"
                 placeholder="98101"
                 {...register("zipCode")}

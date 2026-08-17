@@ -13,6 +13,9 @@ const quoteSchema = z.object({
   vehicleMake: z.string().min(1, "Make is required"),
   vehicleModel: z.string().min(1, "Model is required"),
   vehicleCondition: z.string().min(1, "Select a condition"),
+  streetAddress: z.string().min(1, "Street address is required"),
+  city: z.string().min(1, "City is required"),
+  state: z.string().min(2, "State is required"),
   zipCode: z.string().regex(/^\d{5}(-\d{4})?$/, "Enter a valid ZIP code"),
   additionalNotes: z.string().optional(),
 });

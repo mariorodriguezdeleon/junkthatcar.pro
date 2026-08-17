@@ -6,6 +6,9 @@ export interface QuoteFormData {
   vehicleMake: string;
   vehicleModel: string;
   vehicleCondition: string;
+  streetAddress: string;
+  city: string;
+  state: string;
   zipCode: string;
   additionalNotes?: string;
 }

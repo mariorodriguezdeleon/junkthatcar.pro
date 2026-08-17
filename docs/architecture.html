@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>junkthatcar.pro — System Architecture</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: #020617;
+      min-height: 100vh;
+      padding: 2rem;
+      color: white;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .header { margin-bottom: 2rem; }
+    .header-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+    .pulse-dot { width: 12px; height: 12px; background: #22d3ee; border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.025em; }
+    .subtitle { color: #94a3b8; font-size: 0.875rem; margin-left: 1.75rem; }
+    .diagram-container {
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 1rem;
+      border: 1px solid #1e293b;
+      padding: 1.5rem;
+      overflow-x: auto;
+    }
+    svg { width: 100%; min-width: 950px; display: block; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .card { background: rgba(15, 23, 42, 0.5); border-radius: 0.75rem; border: 1px solid #1e293b; padding: 1.25rem; }
+    .card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .card-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .card-dot.cyan { background: #22d3ee; }
+    .card-dot.emerald { background: #34d399; }
+    .card-dot.amber { background: #fbbf24; }
+    .card h3 { font-size: 0.875rem; font-weight: 600; }
+    .card ul { list-style: none; color: #94a3b8; font-size: 0.75rem; }
+    .card li { margin-bottom: 0.375rem; }
+    .footer { text-align: center; margin-top: 1.5rem; color: #475569; font-size: 0.75rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-row">
+        <div class="pulse-dot"></div>
+        <h1>junkthatcar.pro — System Architecture</h1>
+      </div>
+      <p class="subtitle">Next.js 16 · Tailwind v4 · HubSpot CRM · AWS (planned)</p>
+    </div>
+
+    <div class="diagram-container">
+      <svg viewBox="0 0 1000 600">
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#64748b" />
+          </marker>
+          <marker id="arrowhead-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#22d3ee" />
+          </marker>
+          <marker id="arrowhead-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#fbbf24" />
+          </marker>
+          <marker id="arrowhead-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#fb923c" />
+          </marker>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+
+        <rect width="100%" height="100%" fill="url(#grid)" />
+
+        <!-- AWS Region Boundary -->
+        <rect x="200" y="30" width="610" height="390" rx="12" fill="rgba(251, 191, 36, 0.05)" stroke="#fbbf24" stroke-width="1" stroke-dasharray="8,4"/>
+        <text x="212" y="48" fill="#fbbf24" font-size="10" font-weight="600">AWS — us-west-2</text>
+
+        <!-- Users -->
+        <rect x="30" y="200" width="100" height="55" rx="6" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="80" y="222" fill="white" font-size="11" font-weight="600" text-anchor="middle">Users</text>
+        <text x="80" y="240" fill="#94a3b8" font-size="9" text-anchor="middle">Browser / Mobile</text>
+
+        <!-- Route 53 -->
+        <rect x="230" y="200" width="100" height="55" rx="6" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+        <text x="280" y="222" fill="white" font-size="11" font-weight="600" text-anchor="middle">Route 53</text>
+        <text x="280" y="240" fill="#94a3b8" font-size="9" text-anchor="middle">DNS</text>
+
+        <!-- ACM SSL -->
+        <rect x="230" y="140" width="100" height="42" rx="6" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+        <text x="280" y="158" fill="white" font-size="10" font-weight="600" text-anchor="middle">ACM</text>
+        <text x="280" y="172" fill="#94a3b8" font-size="8" text-anchor="middle">SSL Certificate</text>
+
+        <!-- CloudFront -->
+        <rect x="370" y="200" width="110" height="55" rx="6" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+        <text x="425" y="222" fill="white" font-size="11" font-weight="600" text-anchor="middle">CloudFront</text>
+        <text x="425" y="240" fill="#94a3b8" font-size="9" text-anchor="middle">CDN (HTTPS)</text>
+
+        <!-- Next.js App Container — shows as frontend (cyan) since it's the UI layer -->
+        <rect x="530" y="120" width="220" height="200" rx="8" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1.5"/>
+        <text x="640" y="145" fill="white" font-size="12" font-weight="600" text-anchor="middle">Next.js 16 App</text>
+        <text x="640" y="162" fill="#94a3b8" font-size="9" text-anchor="middle">junkthatcar.pro</text>
+
+        <!-- Divider line inside Next.js box -->
+        <line x1="540" y1="175" x2="740" y2="175" stroke="#1e3a5f" stroke-width="1"/>
+
+        <!-- Static Pages (SSG) -->
+        <text x="640" y="193" fill="#22d3ee" font-size="9" font-weight="600" text-anchor="middle">Static Pages (SSG)</text>
+        <text x="640" y="210" fill="#94a3b8" font-size="8" text-anchor="middle">Home · About · FAQ · Reviews</text>
+        <text x="640" y="224" fill="#94a3b8" font-size="8" text-anchor="middle">Service Areas · Privacy · Terms</text>
+
+        <!-- API Route -->
+        <rect x="550" y="236" width="180" height="36" rx="4" fill="rgba(6, 78, 59, 0.3)" stroke="#34d399" stroke-width="1"/>
+        <text x="640" y="253" fill="white" font-size="9" font-weight="600" text-anchor="middle">/api/quote</text>
+        <text x="640" y="265" fill="#94a3b8" font-size="7" text-anchor="middle">POST · zod validated</text>
+
+        <!-- Deployment note -->
+        <text x="640" y="295" fill="#fbbf24" font-size="7" text-anchor="middle">Deploy: Amplify / S3+Lambda (TBD)</text>
+
+        <!-- HubSpot CRM (External) -->
+        <rect x="830" y="200" width="140" height="65" rx="6" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="900" y="225" fill="white" font-size="11" font-weight="600" text-anchor="middle">HubSpot CRM</text>
+        <text x="900" y="242" fill="#94a3b8" font-size="9" text-anchor="middle">Forms API</text>
+        <text x="900" y="256" fill="#f97316" font-size="7" text-anchor="middle">External Service</text>
+
+        <!-- Quote Form Component -->
+        <rect x="550" y="370" width="180" height="50" rx="6" fill="rgba(8, 51, 68, 0.3)" stroke="#22d3ee" stroke-width="1"/>
+        <text x="640" y="392" fill="white" font-size="10" font-weight="600" text-anchor="middle">QuoteForm</text>
+        <text x="640" y="408" fill="#94a3b8" font-size="8" text-anchor="middle">react-hook-form + zod</text>
+
+        <!-- ===== ARROWS ===== -->
+
+        <!-- Users → CloudFront (via Route 53) -->
+        <line x1="130" y1="227" x2="228" y2="227" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrowhead-cyan)"/>
+        <text x="179" y="220" fill="#94a3b8" font-size="8" text-anchor="middle">HTTPS</text>
+        <line x1="330" y1="227" x2="368" y2="227" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrowhead-cyan)"/>
+
+        <!-- Route 53 → ACM -->
+        <line x1="280" y1="198" x2="280" y2="184" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowhead-amber)"/>
+        <text x="294" y="194" fill="#94a3b8" font-size="7">DNS validation</text>
+
+        <!-- CloudFront → Next.js App -->
+        <line x1="480" y1="227" x2="528" y2="227" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrowhead-cyan)"/>
+
+        <!-- Next.js App: SSG pages served from CDN edge -->
+        <line x1="530" y1="202" x2="482" y2="202" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4,4" marker-end="url(#arrowhead-amber)"/>
+        <text x="506" y="196" fill="#fbbf24" font-size="7" text-anchor="middle">cache</text>
+
+        <!-- QuoteForm → /api/quote -->
+        <line x1="640" y1="370" x2="640" y2="274" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+        <!-- /api/quote → HubSpot -->
+        <line x1="730" y1="254" x2="828" y2="232" stroke="#fb923c" stroke-width="1.5" marker-end="url(#arrowhead-orange)"/>
+        <text x="779" y="238" fill="#fb923c" font-size="8">POST lead</text>
+
+        <!-- HubSpot → /api/quote (response) -->
+        <line x1="830" y1="248" x2="732" y2="260" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="770" y="270" fill="#94a3b8" font-size="7">response</text>
+
+        <!-- ===== LEGEND ===== -->
+        <text x="20" y="490" fill="white" font-size="10" font-weight="600">Legend</text>
+
+        <rect x="20" y="500" width="16" height="10" rx="2" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1"/>
+        <text x="42" y="508" fill="#94a3b8" font-size="8">Frontend / App</text>
+
+        <rect x="160" y="500" width="16" height="10" rx="2" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1"/>
+        <text x="182" y="508" fill="#94a3b8" font-size="8">API / Backend</text>
+
+        <rect x="300" y="500" width="16" height="10" rx="2" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1"/>
+        <text x="322" y="508" fill="#94a3b8" font-size="8">AWS Service</text>
+
+        <rect x="440" y="500" width="16" height="10" rx="2" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1"/>
+        <text x="462" y="508" fill="#94a3b8" font-size="8">External Service</text>
+
+        <line x1="20" y="524" x2="36" y2="524" stroke="#fb923c" stroke-width="1.5"/>
+        <text x="42" y="527" fill="#94a3b8" font-size="8">Data Flow</text>
+
+        <line x1="160" y="524" x2="176" y2="524" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="182" y="527" fill="#94a3b8" font-size="8">Response / Cache</text>
+
+        <rect x="300" y="518" width="16" height="10" rx="2" fill="transparent" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="322" y="527" fill="#94a3b8" font-size="8">Region Boundary</text>
+      </svg>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot cyan"></div>
+          <h3>Frontend</h3>
+        </div>
+        <ul>
+          <li>• Next.js 16 App Router</li>
+          <li>• 8 static pages (SSG)</li>
+          <li>• Tailwind v4 — dark navy theme</li>
+          <li>• react-hook-form + zod</li>
+          <li>• Responsive mobile-first</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot emerald"></div>
+          <h3>Backend / API</h3>
+        </div>
+        <ul>
+          <li>• /api/quote — POST handler</li>
+          <li>• Zod server-side validation</li>
+          <li>• HubSpot Forms API integration</li>
+          <li>• Rate limiting (planned)</li>
+          <li>• Health check endpoint</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot amber"></div>
+          <h3>Infrastructure (Planned)</h3>
+        </div>
+        <ul>
+          <li>• Route 53 — junkthatcar.pro</li>
+          <li>• CloudFront — CDN + HTTPS</li>
+          <li>• Amplify or S3+Lambda</li>
+          <li>• GitHub Actions CI/CD</li>
+          <li>• ACM SSL certificate</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer">
+      junkthatcar.pro · Next.js 16 + HubSpot CRM · Seattle, WA
+    </p>
+  </div>
+</body>
+</html>
