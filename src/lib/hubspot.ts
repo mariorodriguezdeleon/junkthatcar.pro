@@ -26,7 +26,7 @@ export async function submitToHubSpot(
       { name: "address", value: data.streetAddress },
       { name: "city", value: data.city },
       { name: "state", value: data.state },
-      { name: "zip", value: data.zipCode },
+      { name: "zip_code", value: data.zipCode },
       { name: "notes", value: data.additionalNotes || "" },
     ],
     context: {
