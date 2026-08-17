@@ -189,7 +189,7 @@ export default function HomePage() {
             Why Choose {SITE.name}
           </h2>
           <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
-            We make selling your junk car fast, easy, and profitable. Here's what
+            We make selling your junk car fast, easy, and profitable. Here&apos;s what
             sets us apart.
           </p>
         </div>
@@ -220,7 +220,7 @@ export default function HomePage() {
               What Our Customers Say
             </h2>
             <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
-              Don't take our word for it. Here's what people across the Seattle
+              Don&apos;t take our word for it. Here&apos;s what people across the Seattle
               metro area are saying.
             </p>
           </div>
@@ -256,7 +256,7 @@ export default function HomePage() {
             Ready to Get Cash for Your Car?
           </h2>
           <p className="mt-4 text-lg text-slate-400 max-w-xl mx-auto">
-            Get a free, no-obligation quote in minutes. We'll buy your car no
+            Get a free, no-obligation quote in minutes. We&apos;ll buy your car no
             matter the condition.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
