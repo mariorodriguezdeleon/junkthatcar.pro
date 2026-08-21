@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { CheckCircle, AlertCircle, Loader2, Send, Car, MapPin } from "lucide-react";
 import { VEHICLE_CONDITIONS } from "@/lib/constants";
+import { submitToHubSpot } from "@/lib/hubspot";
 import type { QuoteFormData } from "@/types";
 
 const quoteSchema = z.object({
@@ -50,21 +51,15 @@ export default function QuoteForm() {
     setMessage("");
 
     try {
-      const res = await fetch("/api/quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const result = await submitToHubSpot(data);
 
-      const json = await res.json();
-
-      if (res.ok && json.success) {
+      if (result.success) {
         setStatus("success");
-        setMessage(json.message || "Quote submitted! We'll contact you soon.");
+        setMessage(result.message || "Quote submitted! We'll contact you soon.");
         reset();
       } else {
         setStatus("error");
-        setMessage(json.message || "Something went wrong. Please try again.");
+        setMessage(result.message || "Something went wrong. Please try again.");
       }
     } catch {
       setStatus("error");

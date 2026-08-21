@@ -1,16 +1,13 @@
 import type { QuoteFormData, HubSpotResponse } from "@/types";
 
-const HUBSPOT_PORTAL_ID = process.env.HUBSPOT_PORTAL_ID;
-const HUBSPOT_FORM_GUID = process.env.HUBSPOT_FORM_GUID;
+// Public identifiers from the HubSpot form's embed code — not secrets.
+// The Forms API submit endpoint is designed to be called from the browser.
+const HUBSPOT_PORTAL_ID = "244881964";
+const HUBSPOT_FORM_GUID = "0314cb9d-13e7-4e05-b9b9-0268c1438e06";
 
 export async function submitToHubSpot(
   data: QuoteFormData
 ): Promise<HubSpotResponse> {
-  if (!HUBSPOT_PORTAL_ID || !HUBSPOT_FORM_GUID) {
-    console.warn("HubSpot not configured — skipping submission");
-    return { success: true, message: "Quote received (HubSpot not configured)" };
-  }
-
   const url = `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_GUID}`;
 
   const body = {
