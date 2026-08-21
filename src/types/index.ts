@@ -11,6 +11,7 @@ export interface QuoteFormData {
   state: string;
   zipCode: string;
   additionalNotes?: string;
+  website?: string; // honeypot — bots fill this, humans never see it
 }
 
 export interface ServiceArea {

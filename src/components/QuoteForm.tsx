@@ -29,6 +29,7 @@ const quoteSchema = z.object({
     .string()
     .regex(/^\d{5}(-\d{4})?$/, "Enter a valid ZIP code"),
   additionalNotes: z.string().optional(),
+  website: z.string().optional(),
 });
 
 type FormStatus = "idle" | "loading" | "success" | "error";
@@ -47,6 +48,15 @@ export default function QuoteForm() {
   });
 
   const onSubmit = async (data: QuoteFormData) => {
+    // Honeypot check — bots fill hidden fields, humans don't.
+    // Pretend success so the bot thinks it worked, but skip HubSpot.
+    if (data.website) {
+      setStatus("success");
+      setMessage("Quote submitted! We'll contact you soon.");
+      reset();
+      return;
+    }
+
     setStatus("loading");
     setMessage("");
 
@@ -92,6 +102,19 @@ export default function QuoteForm() {
 
       {/* Section: Personal Info */}
       <fieldset disabled={isSubmitting} className="space-y-6">
+        {/* Honeypot field — hidden from humans, filled by bots */}
+        <div className="absolute left-[-9999px] top-[-9999px]" aria-hidden="true">
+          <label>
+            Leave this field empty
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              {...register("website")}
+            />
+          </label>
+        </div>
+
         <div className="grid gap-4 sm:grid-cols-2">
           <FieldWrapper label="Full Name" error={errors.fullName?.message}>
             <input
