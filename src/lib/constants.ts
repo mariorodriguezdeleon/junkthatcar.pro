@@ -2,7 +2,7 @@ export const SITE = {
   name: "Junk That Car",
   domain: "junkthatcar.pro",
   tagline: "We buy junk cars — fast, fair, and free towing.",
-  phone: process.env.NEXT_PUBLIC_PHONE || "(206) 555-0123",
+  phone: process.env.NEXT_PUBLIC_PHONE || "(206) 395-9510",
   email: process.env.NEXT_PUBLIC_EMAIL || "info@junkthatcar.pro",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://junkthatcar.pro",
 } as const;
