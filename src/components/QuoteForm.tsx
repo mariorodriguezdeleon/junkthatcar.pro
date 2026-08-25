@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { CheckCircle, AlertCircle, Loader2, Send, Car, MapPin } from "lucide-react";
-import { VEHICLE_CONDITIONS } from "@/lib/constants";
+import { SITE, VEHICLE_CONDITIONS } from "@/lib/constants";
 import { submitToHubSpot } from "@/lib/hubspot";
 import type { QuoteFormData } from "@/types";
 
@@ -131,7 +131,7 @@ export default function QuoteForm() {
               type="tel"
               autoComplete="tel"
               className="input-field"
-              placeholder="(206) 555-0123"
+              placeholder={SITE.phone}
               {...register("phone")}
             />
           </FieldWrapper>
