@@ -14,6 +14,8 @@ import {
 import { SITE } from "@/lib/constants";
 import type { Review } from "@/types";
 
+import PhotoCarousel from "@/components/PhotoCarousel";
+
 export const metadata: Metadata = {
   title: "Junk That Car — We Buy Junk Cars for Cash | Free Towing",
 };
@@ -117,7 +119,8 @@ export default function HomePage() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
-          <div className="max-w-3xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-7 max-w-3xl">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-jtc-charcoal leading-tight">
               Sell Your Junk Car for{" "}
               <span className="text-brand-800">Top Dollar</span>
@@ -142,6 +145,12 @@ export default function HomePage() {
                 <Phone className="w-4 h-4 text-brand-800" />
                 {SITE.phone}
               </a>
+            </div>
+            </div>
+
+            {/* Side carousel — client photos */}
+            <div className="lg:col-span-5">
+              <PhotoCarousel />
             </div>
           </div>
         </div>
