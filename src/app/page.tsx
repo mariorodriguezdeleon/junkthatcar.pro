@@ -4,7 +4,6 @@ import {
   ClipboardList,
   PhoneCall,
   Banknote,
-  Star,
   Truck,
   Clock,
   DollarSign,
@@ -12,7 +11,6 @@ import {
   Phone,
 } from "lucide-react";
 import { SITE } from "@/lib/constants";
-import type { Review } from "@/types";
 
 import PhotoCarousel from "@/components/PhotoCarousel";
 
@@ -20,33 +18,40 @@ export const metadata: Metadata = {
   title: "Junk That Car — We Buy Junk Cars for Cash | Free Towing",
 };
 
-const testimonials: Review[] = [
+/*
+ * NOTE (2026-09-10): fabricated testimonials removed — FTC compliance
+ * (16 CFR Part 465). When REAL reviews exist, restore this section using
+ * verbatim quotes with permission. See src/app/reviews/page.tsx header
+ * note for the full checklist. Keeping the data shape as a comment:
+ *
+ * const testimonials: Review[] = [
+ *   {
+ *     id: "1",
+ *     author: "<Real customer>",
+ *     rating: 5,
+ *     content: "<Verbatim quote, with written permission>",
+ *     date: "<YYYY-MM-DD>",
+ *     location: "<City, WA>",
+ *   },
+ * ];
+ */
+
+
+const servicePromises = [
   {
-    id: "1",
-    author: "Mike R.",
-    rating: 5,
-    content:
-      "Called in the morning, had cash in hand by 2pm. They gave me $800 for my old Accord that wouldn't start. Unbelievably easy.",
-    date: "2026-06-15",
-    location: "Seattle, WA",
+    title: "Same-day pickup",
+    description:
+      "Most cars are picked up within hours of accepting the offer.",
   },
   {
-    id: "2",
-    author: "Jennifer L.",
-    rating: 5,
-    content:
-      "I was skeptical at first, but they offered more than the other three places I called. Free tow, fast pickup — the whole thing took maybe 4 hours from quote to cash.",
-    date: "2026-07-02",
-    location: "Bellevue, WA",
+    title: "The quote is the price",
+    description:
+      "What we say on the phone is what you get paid at the curb.",
   },
   {
-    id: "3",
-    author: "David P.",
-    rating: 5,
-    content:
-      "My truck was totaled and I needed it gone. They came the same day, handed me a check, and hauled it away. Zero hassle.",
-    date: "2026-05-28",
-    location: "Tacoma, WA",
+    title: "Any condition",
+    description:
+      "Missing parts, flat tires, no title in hand. We'll tell you straight if we can take it.",
   },
 ];
 
@@ -61,7 +66,7 @@ const howItWorks = [
     icon: PhoneCall,
     title: "Accept Your Offer",
     description:
-      "We call within minutes with a fair, no-obligation cash offer. No haggling, no pressure.",
+      "We call you back with a fair, no-obligation cash offer — usually within the hour. No haggling, no pressure.",
   },
   {
     icon: Banknote,
@@ -74,9 +79,9 @@ const howItWorks = [
 const whyChooseUs = [
   {
     icon: DollarSign,
-    title: "Best Prices",
+    title: "Strong Offers",
     description:
-      "We beat competitor offers and pay top dollar for cars in any condition — running, wrecked, or totaled.",
+      "We pay competitively for cars in any condition — running, wrecked, or totaled — and we'll tell you honestly if another buyer can do better.",
   },
   {
     icon: Truck,
@@ -92,20 +97,20 @@ const whyChooseUs = [
   },
 ];
 
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div className="flex items-center gap-0.5" aria-label={`${rating} out of 5 stars`}>
-      {Array.from({ length: 5 }, (_, i) => (
-        <Star
-          key={i}
-          className={`w-4 h-4 ${
-            i < rating ? "fill-brand-500 text-brand-500" : "text-jtc-border"
-          }`}
-        />
-      ))}
-    </div>
-  );
-}
+/*
+ * StarRating — unused since testimonials removal (2026-09-10). Kept here
+ * (commented) so the real-reviews restore is a pure uncomment:
+ *
+ * function StarRating({ rating }: { rating: number }) {
+ *   return (
+ *     <div className="flex items-center gap-0.5" aria-label={`${rating} out of 5 stars`}>
+ *       {Array.from({ length: 5 }, (_, i) => (
+ *         <Star key={i} className={`w-4 h-4 ${i < rating ? "fill-brand-500 text-brand-500" : "text-jtc-border"}`} />
+ *       ))}
+ *     </div>
+ *   );
+ * }
+ */
 
 export default function HomePage() {
   return (
@@ -139,7 +144,7 @@ export default function HomePage() {
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <a
-                href={`tel:${SITE.phone.replace(/[^+\d]/g, "")}`}
+                href={SITE.phoneHref}
                 className="inline-flex items-center gap-2 text-jtc-slate hover:text-jtc-charcoal transition-colors font-medium"
               >
                 <Phone className="w-4 h-4 text-brand-800" />
@@ -221,33 +226,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Testimonials ─── */}
+      {/* ─── Service promise cards ───
+          NOTE (2026-09-10): replaced fabricated testimonials (FTC compliance).
+          These are service commitments, not customer quotes — no names, no
+          ratings, no quotation marks. When REAL reviews exist, restore the
+          testimonials section from git history (see top-of-file note). */}
       <section className="bg-jtc-tint border-y border-jtc-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-jtc-charcoal tracking-tight">
-              What Our Customers Say
+              Our Promises To You
             </h2>
             <p className="mt-4 text-lg text-jtc-slate max-w-2xl mx-auto">
-              Don&apos;t take our word for it. Here&apos;s what people across the Seattle
-              metro area are saying.
+              No invented testimonials here. Just the commitments we make on
+              every single pickup.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((t) => (
+            {servicePromises.map((p) => (
               <div
-                key={t.id}
+                key={p.title}
                 className="rounded-2xl border border-jtc-border bg-white p-6 sm:p-8 flex flex-col"
               >
-                <StarRating rating={t.rating} />
-                <blockquote className="mt-4 text-jtc-charcoal leading-relaxed flex-1">
-                  &ldquo;{t.content}&rdquo;
-                </blockquote>
-                <div className="mt-6 pt-4 border-t border-jtc-border">
-                  <p className="font-semibold text-jtc-charcoal">{t.author}</p>
-                  <p className="text-sm text-jtc-slate">{t.location}</p>
-                </div>
+                <h3 className="text-lg font-semibold text-brand-800">{p.title}</h3>
+                <p className="mt-4 text-jtc-charcoal leading-relaxed flex-1">
+                  {p.description}
+                </p>
               </div>
             ))}
           </div>
@@ -277,7 +282,7 @@ export default function HomePage() {
               <ArrowRight className="w-5 h-5" />
             </Link>
             <a
-              href={`tel:${SITE.phone.replace(/[^+\d]/g, "")}`}
+              href={SITE.phoneHref}
               className="inline-flex items-center gap-2 text-jtc-slate hover:text-jtc-charcoal transition-colors font-medium"
             >
               <Phone className="w-4 h-4 text-brand-800" />

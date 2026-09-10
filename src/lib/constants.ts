@@ -1,4 +1,4 @@
-export const SITE = {
+export const SITE_BASE = {
   name: "Junk That Car",
   domain: "junkthatcar.pro",
   tagline: "We buy junk cars — fast, fair, and free towing.",
@@ -7,11 +7,26 @@ export const SITE = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://junkthatcar.pro",
 } as const;
 
+/*
+ * Phone: display form vs. dial form (RFC 3966).
+ * tel: hrefs must be a pure dial string — no spaces, parens, or dashes.
+ * Use SITE.phone for visible text and SITE.phoneHref for hrefs, everywhere.
+ */
+export const SITE = {
+  ...SITE_BASE,
+  phoneHref: `tel:${SITE_BASE.phone.replace(/[^\d+]/g, "")}`,
+} as const;
+
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/get-quote", label: "Get a Quote" },
+  // NOTE (2026-09-10): "Get a Quote" removed from nav — it duplicates the
+  // header CTA button pointing to the same route. Re-add if the button
+  // ever comes out of the header.
   { href: "/service-areas", label: "Service Areas" },
-  { href: "/reviews", label: "Reviews" },
+  // NOTE (2026-09-10): "Reviews" hidden until real reviews exist (FTC
+  // compliance — see src/app/reviews/page.tsx header note). Restore this
+  // line together with real review content:
+  // { href: "/reviews", label: "Reviews" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
 ] as const;
