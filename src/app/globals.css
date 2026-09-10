@@ -1,44 +1,62 @@
 @import "tailwindcss";
 
+/* ─── Junk That Car brand palette (2026-09) ───────────────────────────
+   Source of truth: SharePoint Clients/Junk_That_Car/jtc-color-palette.md
+   Light theme: white ground, charcoal text, green hero accent.
+   Amber (#FFA726) is an urgency accent — reserve for same-day/limited CTAs.
+   ───────────────────────────────────────────────────────────────────── */
+
 @theme inline {
-  --color-brand-50: #eff6ff;
-  --color-brand-100: #dbeafe;
-  --color-brand-200: #bfdbfe;
-  --color-brand-300: #93c5fd;
-  --color-brand-400: #60a5fa;
-  --color-brand-500: #3b82f6;
-  --color-brand-600: #2563eb;
-  --color-brand-700: #1d4ed8;
-  --color-brand-800: #1e40af;
-  --color-brand-900: #1e3a8a;
-  --color-brand-950: #172554;
+  /* Primary green scale — hero color for buttons, links, active states */
+  --color-brand-50: #f4fbea;   /* faintest green tint */
+  --color-brand-100: #e9f7d4;  /* close to palette's light tint family */
+  --color-brand-200: #d3efae;
+  --color-brand-300: #b4e37f;
+  --color-brand-400: #94d84b;
+  --color-brand-500: #73ce18;  /* PRIMARY — buttons, links, accents */
+  --color-brand-600: #65b815;  /* hover step */
+  --color-brand-700: #5ca813;  /* HOVER/PRESSED only (palette: dark green) */
+  --color-brand-800: #3f7a10;  /* deep green for dark-section accents */
+  --color-brand-900: #2c5510;  /* deep green */
+  --color-brand-950: #212b18;  /* charcoal — footer bg, darkest (palette: charcoal) */
+
+  /* Palette neutrals */
+  --color-jtc-tint: #eef2e9;       /* section backgrounds, alternating rows */
+  --color-jtc-charcoal: #212b18;   /* body text, headings */
+  --color-jtc-slate: #5f6b57;      /* secondary text, captions */
+  --color-jtc-border: #dce3d4;     /* card borders, dividers */
+  --color-jtc-footer-muted: #a9b29f; /* secondary text on charcoal footer */
+  --color-jtc-amber: #ffa726;      /* urgency CTA only — rare */
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+/* Light theme body: white ground, charcoal text */
 body {
-  background: var(--color-brand-950);
-  color: #f1f5f9;
+  background: #ffffff;
+  color: var(--color-jtc-charcoal);
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+/* Form fields: white surface, green-tinted border, charcoal text */
 .input-field {
   width: 100%;
   border-radius: 0.5rem;
-  border: 1px solid var(--color-brand-700);
-  background: color-mix(in srgb, var(--color-brand-900) 50%, transparent);
+  border: 1px solid var(--color-jtc-border);
+  background: #ffffff;
   padding: 0.625rem 0.875rem;
   font-size: 0.9375rem;
-  color: #f1f5f9;
+  color: var(--color-jtc-charcoal);
   transition: border-color 0.15s ease;
 }
 
 .input-field::placeholder {
-  color: var(--color-brand-500);
+  color: var(--color-jtc-slate);
 }
 
 .input-field:focus {
   outline: none;
-  border-color: var(--color-brand-400);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand-400) 25%, transparent);
+  border-color: var(--color-brand-500);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand-500) 25%, transparent);
 }
