@@ -94,7 +94,7 @@ export default function FAQPage() {
         <p className="text-jtc-slate mb-6">We&apos;re happy to help. Give us a call or fill out our quote form.</p>
         <a
           href="/get-quote"
-          className="inline-block px-8 py-4 rounded-lg font-semibold bg-brand-500 text-jtc-charcoal hover:bg-brand-700 hover:text-jtc-charcoal transition-colors"
+          className="inline-block px-8 py-4 rounded-lg font-semibold bg-brand-500 text-jtc-charcoal hover:bg-brand-800 hover:text-jtc-charcoal transition-colors"
         >
           Get a Quote
         </a>

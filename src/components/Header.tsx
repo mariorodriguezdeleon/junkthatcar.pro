@@ -38,7 +38,7 @@ export default function Header() {
             </a>
             <Link
               href="/get-quote"
-              className="ml-1 px-4 py-2 rounded-lg text-sm font-semibold bg-brand-500 text-jtc-charcoal hover:bg-brand-700 hover:text-white transition-colors"
+              className="ml-1 px-4 py-2 rounded-lg text-sm font-semibold bg-brand-500 text-jtc-charcoal hover:bg-brand-800 hover:text-white transition-colors"
             >
               Get a Quote
             </Link>
@@ -70,7 +70,7 @@ export default function Header() {
             <Link
               href="/get-quote"
               onClick={() => setOpen(false)}
-              className="mt-2 px-4 py-2 rounded-lg text-sm font-semibold text-center bg-brand-500 text-jtc-charcoal hover:bg-brand-700 hover:text-white transition-colors"
+              className="mt-2 px-4 py-2 rounded-lg text-sm font-semibold text-center bg-brand-500 text-jtc-charcoal hover:bg-brand-800 hover:text-white transition-colors"
             >
               Get a Quote
             </Link>

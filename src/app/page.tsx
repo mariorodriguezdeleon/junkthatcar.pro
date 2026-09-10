@@ -130,7 +130,7 @@ export default function HomePage() {
             <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <Link
                 href="/get-quote"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-500 text-jtc-charcoal font-semibold text-lg hover:bg-brand-700 hover:text-white transition-colors shadow-lg shadow-brand-500/25"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-500 text-jtc-charcoal font-semibold text-lg hover:bg-brand-800 hover:text-white transition-colors shadow-lg shadow-brand-500/25"
               >
                 Get Your Quote
                 <ArrowRight className="w-5 h-5" />
@@ -262,7 +262,7 @@ export default function HomePage() {
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/get-quote"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-500 text-jtc-charcoal font-semibold text-lg hover:bg-brand-700 hover:text-white transition-colors shadow-lg shadow-brand-500/25"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-500 text-jtc-charcoal font-semibold text-lg hover:bg-brand-800 hover:text-white transition-colors shadow-lg shadow-brand-500/25"
             >
               Get Your Quote
               <ArrowRight className="w-5 h-5" />

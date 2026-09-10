@@ -61,7 +61,7 @@ export default function ReviewsPage() {
       <div className="mt-16 text-center">
         <a
           href="/get-quote"
-          className="inline-block px-8 py-4 rounded-lg font-semibold bg-brand-500 text-jtc-charcoal hover:bg-brand-700 hover:text-jtc-charcoal transition-colors"
+          className="inline-block px-8 py-4 rounded-lg font-semibold bg-brand-500 text-jtc-charcoal hover:bg-brand-800 hover:text-jtc-charcoal transition-colors"
         >
           Get Your Quote Now
         </a>

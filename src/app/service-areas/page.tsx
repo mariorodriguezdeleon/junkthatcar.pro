@@ -45,7 +45,7 @@ export default function ServiceAreasPage() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="/get-quote"
-            className="px-6 py-3 rounded-lg font-semibold bg-brand-500 text-jtc-charcoal hover:bg-brand-700 hover:text-jtc-charcoal transition-colors"
+            className="px-6 py-3 rounded-lg font-semibold bg-brand-500 text-jtc-charcoal hover:bg-brand-800 hover:text-jtc-charcoal transition-colors"
           >
             Get a Quote
           </a>
