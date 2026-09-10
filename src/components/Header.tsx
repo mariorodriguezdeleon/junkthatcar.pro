@@ -20,7 +20,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -31,8 +31,8 @@ export default function Header() {
               </Link>
             ))}
             <a
-              href={`tel:${SITE.phone}`}
-              className="ml-3 px-3 py-2 rounded-lg text-sm font-medium text-brand-800 hover:text-brand-500 transition-colors"
+              href={SITE.phoneHref}
+              className="ml-3 px-3 py-2 rounded-lg text-sm font-medium text-brand-800 hover:text-brand-500 transition-colors whitespace-nowrap"
             >
               {SITE.phone}
             </a>
@@ -47,7 +47,7 @@ export default function Header() {
           {/* Mobile toggle */}
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden p-2 rounded-lg text-jtc-slate hover:text-jtc-charcoal hover:bg-jtc-tint"
+            className="lg:hidden p-2 rounded-lg text-jtc-slate hover:text-jtc-charcoal hover:bg-jtc-tint"
             aria-label="Toggle menu"
           >
             {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -56,7 +56,7 @@ export default function Header() {
 
         {/* Mobile nav */}
         {open && (
-          <nav className="md:hidden pb-4 border-t border-jtc-border mt-2 pt-2 flex flex-col gap-1">
+          <nav className="lg:hidden pb-4 border-t border-jtc-border mt-2 pt-2 flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}

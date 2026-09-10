@@ -4,10 +4,10 @@ import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Get a Quote",
-  description: `Get an instant cash offer for your junk car in the Seattle metro area. Free towing, any condition, same-day pickup — fill out the form and we'll call you with an offer.`,
+  description: `Get a cash offer for your junk car in the Seattle metro area. Free towing, any condition, same-day pickup — fill out the form and we'll call you with an offer, usually within the hour.`,
   openGraph: {
     title: `Get a Quote | ${SITE.name}`,
-    description: `Get an instant cash offer for your junk car. Free towing, any condition.`,
+    description: `Get a cash offer for your junk car. Free towing, any condition.`,
   },
 };
 
@@ -17,11 +17,11 @@ export default function GetQuotePage() {
       {/* Hero */}
       <div className="text-center mb-12">
         <h1 className="text-3xl sm:text-4xl font-bold text-jtc-charcoal tracking-tight">
-          Get an Instant Cash Offer
+          Get Your Cash Offer
         </h1>
         <p className="mt-4 text-lg text-jtc-slate max-w-xl mx-auto">
-          Tell us about your vehicle and we&apos;ll get back to you with a fair
-          offer — usually within an hour.
+          Tell us about your vehicle and we&apos;ll call you back with a firm
+          offer — usually within the hour.
         </p>
       </div>
 
