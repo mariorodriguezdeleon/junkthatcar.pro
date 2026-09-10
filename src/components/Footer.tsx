@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h3 className="text-lg font-bold text-white mb-3">{SITE.name}</h3>
-            <p className="text-sm text-slate-400 leading-relaxed">
+            <p className="text-sm text-jtc-footer-muted leading-relaxed">
               We buy junk cars in the Seattle metro area. Fast, fair, and free towing — any condition.
             </p>
           </div>
@@ -18,10 +18,10 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">Pages</h4>
             <ul className="space-y-2">
-              <li><Link href="/" className="text-sm text-slate-400 hover:text-white transition-colors">Home</Link></li>
-              <li><Link href="/get-quote" className="text-sm text-slate-400 hover:text-white transition-colors">Get a Quote</Link></li>
-              <li><Link href="/service-areas" className="text-sm text-slate-400 hover:text-white transition-colors">Service Areas</Link></li>
-              <li><Link href="/reviews" className="text-sm text-slate-400 hover:text-white transition-colors">Reviews</Link></li>
+              <li><Link href="/" className="text-sm text-jtc-footer-muted hover:text-white transition-colors">Home</Link></li>
+              <li><Link href="/get-quote" className="text-sm text-jtc-footer-muted hover:text-white transition-colors">Get a Quote</Link></li>
+              <li><Link href="/service-areas" className="text-sm text-jtc-footer-muted hover:text-white transition-colors">Service Areas</Link></li>
+              <li><Link href="/reviews" className="text-sm text-jtc-footer-muted hover:text-white transition-colors">Reviews</Link></li>
             </ul>
           </div>
 
@@ -29,24 +29,24 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">Info</h4>
             <ul className="space-y-2">
-              <li><Link href="/about" className="text-sm text-slate-400 hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="/faq" className="text-sm text-slate-400 hover:text-white transition-colors">FAQ</Link></li>
-              <li><Link href="/privacy" className="text-sm text-slate-400 hover:text-white transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="text-sm text-slate-400 hover:text-white transition-colors">Terms</Link></li>
+              <li><Link href="/about" className="text-sm text-jtc-footer-muted hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/faq" className="text-sm text-jtc-footer-muted hover:text-white transition-colors">FAQ</Link></li>
+              <li><Link href="/privacy" className="text-sm text-jtc-footer-muted hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="text-sm text-jtc-footer-muted hover:text-white transition-colors">Terms</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
             <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">Contact</h4>
-            <ul className="space-y-2 text-sm text-slate-400">
+            <ul className="space-y-2 text-sm text-jtc-footer-muted">
               <li>{SITE.phone}</li>
               <li>{SITE.email}</li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-brand-800 text-center text-sm text-slate-500">
+        <div className="mt-10 pt-6 border-t border-brand-800 text-center text-sm text-jtc-footer-muted">
           &copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.
         </div>
       </div>

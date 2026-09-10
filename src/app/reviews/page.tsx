@@ -21,17 +21,17 @@ export default function ReviewsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
       <div className="text-center mb-16">
-        <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-          What Our <span className="text-brand-400">Customers Say</span>
+        <h1 className="text-4xl sm:text-5xl font-bold text-jtc-charcoal mb-4">
+          What Our <span className="text-brand-800">Customers Say</span>
         </h1>
-        <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+        <p className="text-lg text-jtc-slate max-w-2xl mx-auto">
           Real reviews from real customers across the Seattle metro area.
         </p>
         <div className="flex items-center justify-center gap-1 mt-4">
           {[...Array(5)].map((_, i) => (
             <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
           ))}
-          <span className="ml-2 text-slate-300 font-medium">4.9 average</span>
+          <span className="ml-2 text-jtc-charcoal font-medium">4.9 average</span>
         </div>
       </div>
 
@@ -39,7 +39,7 @@ export default function ReviewsPage() {
         {reviews.map((review) => (
           <div
             key={review.id}
-            className="bg-brand-900/40 border border-brand-800 rounded-xl p-6"
+            className="bg-white border border-jtc-border rounded-xl p-6"
           >
             <div className="flex items-center gap-1 mb-3">
               {[...Array(5)].map((_, i) => (
@@ -49,10 +49,10 @@ export default function ReviewsPage() {
                 />
               ))}
             </div>
-            <p className="text-slate-300 leading-relaxed mb-4">&ldquo;{review.content}&rdquo;</p>
+            <p className="text-jtc-charcoal leading-relaxed mb-4">&ldquo;{review.content}&rdquo;</p>
             <div>
-              <p className="text-white font-medium text-sm">{review.author}</p>
-              <p className="text-slate-500 text-xs">{review.location}</p>
+              <p className="text-jtc-charcoal font-medium text-sm">{review.author}</p>
+              <p className="text-jtc-slate text-xs">{review.location}</p>
             </div>
           </div>
         ))}
@@ -61,7 +61,7 @@ export default function ReviewsPage() {
       <div className="mt-16 text-center">
         <a
           href="/get-quote"
-          className="inline-block px-8 py-4 rounded-lg font-semibold bg-brand-500 text-white hover:bg-brand-400 transition-colors"
+          className="inline-block px-8 py-4 rounded-lg font-semibold bg-brand-500 text-jtc-charcoal hover:bg-brand-700 hover:text-jtc-charcoal transition-colors"
         >
           Get Your Quote Now
         </a>

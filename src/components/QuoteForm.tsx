@@ -148,9 +148,9 @@ export default function QuoteForm() {
         </FieldWrapper>
 
         {/* Section: Vehicle Info */}
-        <div className="pt-4 border-t border-brand-800">
-          <h2 className="flex items-center gap-2 text-lg font-semibold text-white mb-4">
-            <Car className="h-5 w-5 text-brand-400" />
+        <div className="pt-4 border-t border-jtc-border">
+          <h2 className="flex items-center gap-2 text-lg font-semibold text-jtc-charcoal mb-4">
+            <Car className="h-5 w-5 text-brand-800" />
             Vehicle Details
           </h2>
 
@@ -205,9 +205,9 @@ export default function QuoteForm() {
         </div>
 
         {/* Section: Pickup Address */}
-        <div className="pt-4 border-t border-brand-800">
-          <h2 className="flex items-center gap-2 text-lg font-semibold text-white mb-4">
-            <MapPin className="h-5 w-5 text-brand-400" />
+        <div className="pt-4 border-t border-jtc-border">
+          <h2 className="flex items-center gap-2 text-lg font-semibold text-jtc-charcoal mb-4">
+            <MapPin className="h-5 w-5 text-brand-800" />
             Pickup Address
           </h2>
 
@@ -260,8 +260,8 @@ export default function QuoteForm() {
         </div>
 
         {/* Section: Notes */}
-        <div className="pt-4 border-t border-brand-800">
-          <label className="block text-sm font-medium text-slate-300 mb-1.5">
+        <div className="pt-4 border-t border-jtc-border">
+          <label className="block text-sm font-medium text-jtc-charcoal mb-1.5">
             Additional Notes
           </label>
           <textarea
@@ -277,7 +277,7 @@ export default function QuoteForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-brand-500 px-6 py-3 text-base font-semibold text-white hover:bg-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-brand-950 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-brand-500 px-6 py-3 text-base font-semibold text-jtc-charcoal hover:bg-brand-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2 focus:ring-offset-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {isSubmitting ? (
               <>
@@ -310,7 +310,7 @@ function FieldWrapper({
 }) {
   return (
     <label className="block">
-      <span className="block text-sm font-medium text-slate-300 mb-1.5">
+      <span className="block text-sm font-medium text-jtc-charcoal mb-1.5">
         {label}
       </span>
       {children}
