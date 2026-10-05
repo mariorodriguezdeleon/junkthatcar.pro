@@ -52,7 +52,8 @@ export const SERVICE_AREAS = [
   { city: "Redmond", county: "King", zipCodes: ["98052", "98053", "98073", "98074"] },
   { city: "Lynnwood", county: "Snohomish", zipCodes: ["98036", "98037", "98046", "98087"] },
   { city: "Bothell", county: "King", zipCodes: ["98011", "98012", "98021", "98041"] },
-  { city: "Burien", county: "King", zipCodes: ["98148", "98166", "98168"] },
+  { city: "Burien", county: "King", zipCodes: ["98148", "98166"] },
+  { city: "Tukwila", county: "King", zipCodes: ["98168", "98178", "98188"] },
   { city: "Issaquah", county: "King", zipCodes: ["98027", "98029", "98075"] },
   { city: "Sammamish", county: "King", zipCodes: ["98074", "98075"] },
 ] as const;
